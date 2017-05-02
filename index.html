@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stress Survey</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h2>Stress Survey</h2>
+      </div>
+      <form id="stress-survey">
+        <div class="form-group">
+          <p>In the past year, I experienced the following stress symptoms:</p>
+          <input type="checkbox" name="stress-symptoms" value="overwhelmed"> Feeling overwhelmed or overloaded<br>
+          <input type="checkbox" name="stress-symptoms" value="decision-paralysis"> Difficulty making decisions<br>
+          <input type="checkbox" name="stress-symptoms" value="irritability"> Overreaction to petty annoyances<br>
+        </div>
+        <div class="form-group">
+          <p>In the past year, I experienced the following health warning signs:</p>
+          <input type="checkbox" name="health-symptoms" value="insomnia"> Insomnia, nightmares, disturbing dreams<br>
+          <input type="checkbox" name="health-symptoms" value="panic"> Sudden attacks of life-threatening panic<br>
+          <input type="checkbox" name="health-symptoms" value="suicidal-ideation"> Frequent crying or suicidal thoughts<br>
+        </div>
+
+       <button type="submit">Submit Survey</button>
+      </form>
+      <span id="work-responses">
+        <p><b>You use the following methods of transportation to travel to work or school:</b></p>
+      </span>
+    </div>
+  </body>
+</html>
