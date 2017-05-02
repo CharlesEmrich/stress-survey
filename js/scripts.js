@@ -2,51 +2,38 @@ var stressSymptoms   = [],
     healthSymptoms   = [],
     copingMechanisms = [];
 
-$(function() {
-//   function functionthatdoesitall (action) {
-//     action is either "add" or "remove"
-//   }
-//
-//   function itRemovesAThing()
-//   function itAddsAThing()
+var formGroups = ["stress-symptoms", "health-symptoms", "coping-mechanisms"];
+var healthArrays = [stressSymptoms, healthSymptoms, copingMechanisms];
 
+$(function() {
+  var clicked = $(this).val();
+  //Front-End Function Definitions
+  function appendElement (formGroup, array) {
+    $("input:checkbox[name='" + formGroup + "']:checked").each(function() {
+      if (array.indexOf(clicked) === -1) {
+        array.push(clicked);
+      }
+    });
+  }
+
+  function removeElement (formGroup, array) {
+    $("input:checkbox[name='" + formGroup + "']:not(:checked)").each(function() {
+    if (array.indexOf(clicked) !== -1) {
+      array.splice(array.indexOf(clicked), 1);
+    }
+  });
+  }
+
+  //Event Handlers
   $("form#stress-survey").change(function() {
     //Add currently checked selections to symptom arrays:
-    $("input:checkbox[name='stress-symptoms']:checked").each(function() {
-      if (stressSymptoms.indexOf($(this).val()) === -1) {
-        stressSymptoms.push($(this).val());
-      }
-    });
-    $("input:checkbox[name='health-symptoms']:checked").each(function() {
-      if (healthSymptoms.indexOf($(this).val()) === -1) {
-        healthSymptoms.push($(this).val());
-      }
-    });
-    $("input:checkbox[name='coping-mechanisms']:checked").each(function() {
-      if (copingMechanisms.indexOf($(this).val()) === -1) {
-        copingMechanisms.push($(this).val());
-      }
-    });
-
-    //Remove currently unchecked selections from symptom arrays:
-    $("input:checkbox[name='stress-symptoms']:not(:checked)").each(function() {
-      if (stressSymptoms.indexOf($(this).val()) !== -1) {
-        stressSymptoms.splice(stressSymptoms.indexOf($(this).val()), 1);
-      }
-    });
-      $("input:checkbox[name='health-symptoms']:not(:checked)").each(function() {
-      if (healthSymptoms.indexOf($(this).val()) !== -1) {
-        healthSymptoms.splice(healthSymptoms.indexOf($(this).val()), 1);
-      }
-    });
-      $("input:checkbox[name='coping-mechanisms']:not(:checked)").each(function() {
-      if (copingMechanisms.indexOf($(this).val()) !== -1) {
-        copingMechanisms.splice(copingMechanisms.indexOf($(this).val()), 1);
-      }
-    });
+    for (var i = 0; i < formGroups.length; i++) {
+      appendElement(formGroups[i], healthArrays[i]);
+      removeElement(formGroups[i], healthArrays[i]);
+    }
 
     //Show information depending on state of symptom arrays:
 
-    console.log([healthSymptoms, stressSymptoms, copingMechanisms]);
+    console.log([stressSymptoms, healthSymptoms, copingMechanisms]);
   });
 });
